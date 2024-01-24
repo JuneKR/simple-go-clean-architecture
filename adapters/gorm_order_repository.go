@@ -16,6 +16,6 @@ func NewGormOrderRepository(db *gorm.DB) usecases.OrderRepository {
 }
 
 // Save implements usecases.OrderRepository
-func (*GormOrderRepository) Save(entities.Order) error {
-	panic("unimplemented")
+func (r *GormOrderRepository) Save(order entities.Order) error {
+	return r.db.Create(&order).Error
 }
